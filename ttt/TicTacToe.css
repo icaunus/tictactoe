@@ -1,0 +1,43 @@
+/*
+ * TicTacToe css File
+*/
+/*
+
+/**/ table, td {
+  border: 1px dashed black;
+  width: 10vw;
+  height: 10vh;
+}
+
+.cell {
+  color: #00ff00;
+  margin-left: 45px;
+  visibility: hidden;
+}
+
+.occupied {
+  background: #ff0000;
+}
+
+#start {
+   margin-left: 40%;
+}
+
+#time {
+  top: 20px;
+  right: 0;
+  bottom: 0;
+  left: auto;
+}
+
+#reset {
+  margin: 0 0 50%;
+  padding-top: 0;
+  float: right;
+}
+
+/**/
+
+.TicTacToe {
+    /* propertys here */
+}
