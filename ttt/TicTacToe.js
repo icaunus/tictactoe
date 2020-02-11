@@ -2,16 +2,31 @@ import React, { Component } from 'react';
 import './TicTacToe.css';
 
 class TicTacToe extends Component {
+
+/**/
   constructor(props){
     super(props);
-
+this.start = new Date();
+      this.startTimer = setInterval(
+    this.f,
+    1000
+  );
+  
   }
+/**/
+ f() {
+      var diff = new Date() - this.start;
+      
+      document.getElementById("time").innerText = Math.round(diff / 1000);
+    }
 
  rst() {
   var cells = document.getElementsByClassName("cell");
   var tableDatas = document.getElementsByTagName("td");
+
+  delete document.getElementById("outer")["disabled"];
   
-  // nb! clearInterval(startTimer);
+  clearInterval(this.startTimer);
    document.getElementById("time").innerText = "0";
   
    for (var i = 0; i < tableDatas.length; i++) {
@@ -40,26 +55,25 @@ show(cellId, parentId) {
   document.getElementById(parentId).className = ("occupied");
 }
 
-time() {/*
-  var start = new Date();
+time() {
   
-  var startTimer = setInterval(
-    function f() {
-      var diff = new Date() - start;
-      
-      document.getElementById("time").innerText = Math.round(diff / 1000);
-    },
+
+this.start = new Date();
+    this.startTimer = setInterval(
+    this.f,
     1000
-  ); */
+  );
+  
 }
 
 
   componentWillMount(){
-// nb! var startTimer;
-
-
   }
-  // componentDidMount(){}
+  componentDidMount(){
+this.start = new Date();
+document.getElementById("t0").style.width = window.screen.width;
+  setTimeout(() => { console.log("") }, 750);
+  }
   // componentWillUnmount(){}
 
   // componentWillReceiveProps(){}
@@ -69,8 +83,8 @@ time() {/*
 
   render() {
     return (
-      <div>
-        <table>
+      <div id="outer">
+        <table id="t0" disabled>
     <tbody>
       <tr>
         <td id="td0" onClick={() => this.show('s0', 'td0')}>
@@ -91,7 +105,7 @@ time() {/*
         </td>
         <td id="td4" onClick={() => this.show('s0', 'td4')}>
           <span id="s4" className="cell">X</span>
-          <span id="time" onMouseOver="time()">0</span>          
+          <span id="time" onMouseOver={() => this.time}>0</span>          
         </td>
         <td id="td5" onClick={() => this.show('s0', 'td5')}>
           <span id="s5" className="cell">X</span>
@@ -110,7 +124,7 @@ time() {/*
       </tr>
       <tr>
         <td colSpan="3">
-          <button id="start" onClick="time()">START</button>
+          <button id="start" onClick={this.time}>START</button>
         </td>
       </tr> 
     </tbody>
